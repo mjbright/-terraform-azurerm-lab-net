@@ -5,6 +5,7 @@
 #resource "azurerm_resource_group rg {
 #  location = var.location
 #  name     = var.resource_group
+#  tags     = merge(var.tags, { source = "terraform", type = "group" } )
 #}
 
 resource azurerm_virtual_network vnet {
@@ -19,7 +20,7 @@ resource azurerm_virtual_network vnet {
   #resource_group_name   = azurerm_resource_group.rg.name
   resource_group_name = var.resource_group
 
-  tags = { source = "terraform" }
+  tags = merge(var.tags, { source = "terraform", type = "network" } )
 }
 
 resource azurerm_subnet subnet {
@@ -30,6 +31,6 @@ resource azurerm_subnet subnet {
   address_prefixes     = [ var.subnet_prefix ]
 
   # Curiously this resource does not have a tags parameter
-  # tags = { source = "terraform" }
+  # tags = merge(var.tags, { source = "terraform", type = "network" } )
 }
 

@@ -19,6 +19,8 @@ resource azurerm_network_security_group sec-grp {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+
+  tags = merge(var.tags, { source = "terraform", type = "network" } )
 }
 
 resource azurerm_subnet_network_security_group_association sg-asso {
@@ -27,5 +29,7 @@ resource azurerm_subnet_network_security_group_association sg-asso {
   depends_on = [
     azurerm_network_security_group.sec-grp
   ]
+
+  tags = merge(var.tags, { source = "terraform", type = "network" } )
 }
 
