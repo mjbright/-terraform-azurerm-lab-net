@@ -30,6 +30,6 @@ resource azurerm_subnet_network_security_group_association sg-asso {
     azurerm_network_security_group.sec-grp
   ]
 
-  tags = merge(var.tags, { source = "terraform", type = "network" } )
+  # tags = merge(var.tags, { source = "terraform", type = "network" } )
 }
 
