@@ -30,7 +30,7 @@ variable subnet_prefix {
   default     = "10.0.10.0/24"
 }
 variable tags {
-  type        = "string"
+  type        = map("string")
   description = "Tags to apply to resources"
   default     = {}
 }
